@@ -1,0 +1,27 @@
+[package]
+name = "risc_rt_os"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+riscv-rt = "0.12"
+riscv = "0.11"
+panic-halt = "0.2"
+# smoltcp - 嵌入式 TCP/IP 協定棧
+smoltcp = { version = "0.11", default-features = false, features = [
+    "proto-ipv4",
+    "socket-tcp",
+    "medium-ethernet",
+] }
+# 用於靜態記憶體分配
+heapless = "0.8"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[profile.dev]
+opt-level = "s"
+panic = "abort"

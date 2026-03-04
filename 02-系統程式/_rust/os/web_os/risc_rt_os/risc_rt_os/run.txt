@@ -1,0 +1,36 @@
+Starting RISC-V Web Server with Network Support...
+
+========================================
+  RISC-V Web Server with Real Network
+========================================
+
+[1/4] Initializing VirtIO network device...
+      Scanning for VirtIO devices...
+      [0] 0x10001000: magic=0x74726976, ver=1, dev_id=0
+      [1] 0x10002000: magic=0x74726976, ver=1, dev_id=0
+      [2] 0x10003000: magic=0x74726976, ver=1, dev_id=0
+      [3] 0x10004000: magic=0x74726976, ver=1, dev_id=0
+      [4] 0x10005000: magic=0x74726976, ver=1, dev_id=0
+      [5] 0x10006000: magic=0x74726976, ver=1, dev_id=0
+      [6] 0x10007000: magic=0x74726976, ver=1, dev_id=0
+      [7] 0x10008000: magic=0x74726976, ver=1, dev_id=1
+          ✓ Found VirtIO network device!
+      ✗ No VirtIO network device found
+
+Make sure QEMU is started with:
+  -netdev user,id=net0
+  -device virtio-net-device,netdev=net0
+
+Running in demo mode without real network...
+
+Running demo mode...
+
+[Demo Request #1]
+>>> GET / HTTP/1.1
+<<< 116 bytes
+
+[Demo Request #2]
+>>> GET /about HTTP/1.1
+<<< 153 bytes
+QEMU: Terminated
+

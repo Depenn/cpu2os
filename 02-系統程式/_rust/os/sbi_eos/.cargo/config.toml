@@ -1,0 +1,11 @@
+[build]
+target = "riscv64gc-unknown-none-elf"
+
+[target.riscv64gc-unknown-none-elf]
+rustflags = [
+    "-C", "link-arg=-Tkernel/src/linker.ld",
+]
+
+[target.'cfg(all(target_arch = "riscv64", target_os = "none"))']
+# 去掉 -device loader，改用簡單的 -kernel
+runner = "qemu-system-riscv64 -machine virt -nographic -bios default -kernel"
