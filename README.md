@@ -3,3 +3,8 @@
 本書採用《檔案目錄》直接當成《書籍目錄》的方式撰寫，請直接看本頁上面的《資料夾與檔案》！
 
 使用本書與程式請遵照 [授權聲明](LICENSE.md) !
+
+# Computer design -- from software to hardware
+This book is written in the form of "Archive Catalog" directly as a "Book Catalog", please directly read the "Folders and Files" on this page!
+
+Please follow the authorization statement when using this book and program!
