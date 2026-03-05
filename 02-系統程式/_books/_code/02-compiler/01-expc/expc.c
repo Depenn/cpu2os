@@ -2,16 +2,16 @@
 #include <ctype.h>
 #include <stdlib.h>
 
-// 全域變數追蹤目前讀取到的字元位置
+// Global variable to track the current character position in the input string
 const char *p;
 
-// 預覽目前的字元
+// Preview the current character without moving the pointer
 char peek() { return *p; }
 
-// 讀取並跳至下一個字元
+// Read the current character and move the pointer to the next character
 char get() { return *p++; }
 
-// 函數預宣告（對應 EBNF 規則）
+// Function declarations (corresponding to EBNF grammar rules)
 double expression();
 double term();
 double factor();
@@ -59,11 +59,11 @@ double number() {
 
 int main() {
     char input[100];
-    printf("請輸入數學運算式 (例如 3+5*(2-1)): ");
+    printf("Please enter a mathematical expression (e.g., 3+5*(2-1)): ");
     scanf("%s", input);
     
     p = input;
-    printf("計算結果: %.2f\n", expression());
+    printf("Result: %.2f\n", expression());
     
     return 0;
 }

@@ -6,12 +6,12 @@ int temp_count = 0;
 
 int new_temp() { return ++temp_count; }
 
-// 預宣告
+// Forward declarations
 int expression();
 int term();
 int factor();
 
-// 處理數字或變數 (Identifier)
+// Handle numbers or variables (Identifier)
 int get_atom() {
     if (isdigit(*p)) {
         int val = 0;
@@ -20,10 +20,10 @@ int get_atom() {
         printf("t%d = %d\n", t, val);
         return t;
     } else if (isalpha(*p)) {
-        // 假設這是一個變數，直接回傳一個代表該變數的代號（或直接印出）
+        // Assume this is a variable, directly return a token representing it (or print it)
         char var_name = *p++;
         int t = new_temp();
-        printf("t%d = load %c\n", t, var_name); // 模擬從記憶體載入變數
+        printf("t%d = load %c\n", t, var_name); // Simulate loading a variable from memory 
         return t;
     }
     return 0;
@@ -60,25 +60,25 @@ int expression() {
     return left;
 }
 
-// 新增：處理賦值陳述句 assignment = id "=" expression
+// New: Handle assignment statements (assignment = id "=" expression)
 void assignment() {
     if (isalpha(*p) && *(p+1) == '=') {
         char var_name = *p;
-        p += 2; // 跳過 'x='
+        p += 2; // Skip 'x='
         int result_t = expression();
         printf("store t%d into %c\n", result_t, var_name);
     } else {
-        expression(); // 如果不是賦值，就當作普通運算
+        expression(); // If it's not an assignment, treat it as a normal expression
     }
 }
 
 int main() {
     char input[100];
-    printf("請輸入賦值語句 (例如 x=3+5*(2-y)): ");
+    printf("Please enter an assignment statement (e.g., x=3+5*(2-y)): ");
     scanf("%s", input);
     p = input;
 
-    printf("\n--- 產生的中間碼 (Intermediate Code) ---\n");
+    printf("\n--- Generated Intermediate Code ---\n");
     assignment();
     
     return 0;
